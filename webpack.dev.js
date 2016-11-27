@@ -4,7 +4,7 @@ const path              = require('path');
 const context = path.resolve(__dirname, 'app');
 
 const config = {
-  devtool: "cheap-eval-source-map",
+  devtool: "eval-source-map",
   entry: `${context}/src/editor/components/index.js`,
   output: {
     path: `${context}/build`,
