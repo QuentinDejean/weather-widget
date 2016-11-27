@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "description": "Embeddable Weather widget based on OpenWeatherMap",
   "main": "index.js",
+  "engines": {
+    "node": "6.9.0",
+    "npm": "2.15.5"
+  },
   "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.js",
     "test": "test"
   },
   "repository": {
@@ -21,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/QuentinDejean/weather-widget/issues"
   },
-  "homepage": "https://github.com/QuentinDejean/weather-widget#readme"
+  "homepage": "https://github.com/QuentinDejean/weather-widget#readme",
+  "devDependencies": {
+    "webpack": "2.1.0-beta.27",
+    "webpack-dev-server": "2.1.0-beta.12"
+  }
 }
