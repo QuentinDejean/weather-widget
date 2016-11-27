@@ -1,6 +1,14 @@
 @import './weather-icons.css';
 
-.cleanslate {
+:global(.cleanslate) {
+  padding: 10px!important;
+
+  border: 1px solid #777!important;
+  border-radius: 6px!important;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
   font-weight: 300 !important;
+}
+
+:global(.cleanslate h3) {
+  padding-top: 0!important;
 }
