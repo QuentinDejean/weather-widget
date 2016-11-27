@@ -1,9 +1,11 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 
 const {
+  DefinePlugin,
   HotModuleReplacementPlugin,
   NamedModulesPlugin }  = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const env               = require('./.env');
 const path              = require('path');
 
 const entry = [
@@ -86,7 +88,12 @@ const config = [{
     filename: 'bundle.widget.js',
     publicPath: '/assets/'
   },
-  plugins
+  plugins: [
+    ...plugins,
+    new DefinePlugin({
+      WEATHER_API: JSON.stringify(env.WEATHER_API_KEY)
+    })
+  ]
 }];
 
 module.exports = config;

@@ -87,7 +87,6 @@ class WeatherWidget extends React.Component {
 
   renderWeatherInfo() {
     const { weather } = this.state.weatherInfo;
-    console.log(weather);
     const { description, main } = weather[0];
 
     return (
