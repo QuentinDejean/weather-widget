@@ -1,0 +1,25 @@
+{
+  "name": "weather-widget",
+  "version": "0.0.1",
+  "description": "Embeddable Weather widget based on OpenWeatherMap",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuentinDejean/weather-widget.git"
+  },
+  "keywords": [
+    "weather",
+    "widget",
+    "embeddable",
+    "javascript"
+  ],
+  "author": "Quentin Dejean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QuentinDejean/weather-widget/issues"
+  },
+  "homepage": "https://github.com/QuentinDejean/weather-widget#readme"
+}
