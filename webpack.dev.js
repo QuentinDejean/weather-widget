@@ -16,6 +16,14 @@ const config = [{
       template: 'assets/index.html'
     })
   ]
+}, {
+  context: `${context}/src/widget`,
+  devtool: "eval-source-map",
+  entry: `${context}/src/widget/components/index.js`,
+  output: {
+    path: `${context}/build`,
+    filename: 'bundle.widget.js'
+  }
 }];
 
 module.exports = config;
