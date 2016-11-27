@@ -18,8 +18,8 @@ class WeatherWidget extends React.Component {
   componentDidMount() {
     const { unit } = this.props;
     positionUtils.getWeatherInfo(unit)
-    .then(({ wind }) => {
-      this.setState({ weatherInfo: { wind } });
+    .then(({ wind, main, weather }) => {
+      this.setState({ weatherInfo: { wind, main, weather } });
     })
     .catch(() => {
       this.setState({
@@ -45,7 +45,7 @@ class WeatherWidget extends React.Component {
     );
   }
 
-  renderWeatherInfo() {
+  renderInfo() {
     const { error, weatherInfo } = this.state;
 
     if (error) {
@@ -58,8 +58,17 @@ class WeatherWidget extends React.Component {
 
     return (
       <div>
+        {this.renderUnitInfo()}
         {this.renderWindInfo()}
+        {this.renderWeatherInfo()}
       </div>
+    );
+  }
+
+  renderUnitInfo() {
+    const { unit } = this.props;
+    return (
+      <p><strong>Unit Displaying:</strong> {unit}</p>
     );
   }
 
@@ -72,10 +81,17 @@ class WeatherWidget extends React.Component {
     }
 
     return (
-      <div>
-        <div>Degree: {deg}</div>
-        <div>Speed: {speed}</div>
-      </div>
+      <p><strong>Wind Info:</strong> Degree: {deg} | Speed: {speed}</p>
+    );
+  }
+
+  renderWeatherInfo() {
+    const { weather } = this.state.weatherInfo;
+    console.log(weather);
+    const { description, main } = weather[0];
+
+    return (
+      <p><strong>Weather Info:</strong> {main} ({ description })</p>
     );
   }
 
@@ -85,7 +101,7 @@ class WeatherWidget extends React.Component {
     return (
       <div>
         <h3>{title}</h3>
-        {this.renderWeatherInfo()}
+        {this.renderInfo()}
       </div>
     );
   }
