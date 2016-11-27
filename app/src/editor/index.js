@@ -3,6 +3,7 @@
 
 import { AppContainer }     from 'react-hot-loader';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider';
 import React                from 'react';
 import ReactDOM             from 'react-dom';
 
@@ -17,7 +18,9 @@ injectTapEventPlugin();
 const render = () => {
   ReactDOM.render(
     <AppContainer>
-      <Editor />
+      <MuiThemeProvider>
+        <Editor />
+      </MuiThemeProvider>
     </AppContainer>,
     document.getElementById('editor')
   );
