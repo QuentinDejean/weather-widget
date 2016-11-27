@@ -43,7 +43,7 @@ const context = path.resolve(__dirname, 'app');
 const config = [{
   context: `${context}/src/editor`,
   devServer,
-  devtool: 'eval-source-map',
+  devtool: 'eval',
   entry: [
     ...entry,
     `${context}/src/editor/index.js`
@@ -62,10 +62,10 @@ const config = [{
 }, {
   context: `${context}/src/widget`,
   devServer,
-  devtool: 'eval-source-map',
+  devtool: 'eval',
   entry: [
     ...entry,
-    `${context}/src/widget/components/index.js`
+    `${context}/src/widget/index.js`
   ],
   module: modules,
   output: {

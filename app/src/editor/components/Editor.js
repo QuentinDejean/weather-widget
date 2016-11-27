@@ -41,7 +41,7 @@ class Editor extends React.Component {
 
     script.src = this.scriptName;
     script.async = true;
-    script.setAttribute('title', title);
+    script.setAttribute('data-title', title);
     script.setAttribute('data-show-wind', wind);
     script.setAttribute('data-unit', unit);
 
@@ -58,6 +58,7 @@ class Editor extends React.Component {
   }
 
   renderScript() {
+    this.appendScript();
     const { title, wind, unit } = this.state;
     return (
       <div>

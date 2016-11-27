@@ -9,5 +9,7 @@
       }
     }],
     "react/jsx-filename-extension": [error, { "extensions": [".js"] }],
+    "arrow-body-style": [2, "always"],
+    "max-len": [1, 200]
   }
 }
