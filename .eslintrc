@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-multi-spaces": ["error", {
+      exceptions: {
+        "VariableDeclarator": true,
+        "ImportDeclaration": true
+      }
+    }]
+  }
+}
