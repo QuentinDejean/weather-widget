@@ -56,7 +56,21 @@ class WeatherWidget extends React.Component {
       return this.renderLoadingInfoMessage();
     }
 
+    return (
+      <div>
+        {this.renderWindInfo()}
+      </div>
+    );
+  }
+
+  renderWindInfo() {
+    const { showWind } = this.props;
     const { deg, speed } = this.state.weatherInfo.wind;
+
+    if (!showWind) {
+      return null;
+    }
+
     return (
       <div>
         <div>Degree: {deg}</div>

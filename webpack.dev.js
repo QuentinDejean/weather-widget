@@ -68,7 +68,19 @@ const config = [{
     ...entry,
     `${context}/src/widget/index.js`
   ],
-  module: modules,
+  module: {
+    rules: [
+      ...modules.rules,
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?name=fonts/[name].[ext]' +
+        '?[hash:20]&limit=10000&minetype=application/font-woff'
+      }, {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]?[hash:20]'
+      }
+    ]
+  },
   output: {
     path: `${context}/build`,
     filename: 'bundle.widget.js',
