@@ -46,7 +46,7 @@ class Editor extends React.Component {
     script.setAttribute('data-unit', unit);
 
     if (this.demoRef.hasChildNodes()) {
-      this.demoRef.removeChild(this.demoRef.lastChild);
+      this.demoRef.innerHTML = '';
     }
 
     this.demoRef.appendChild(script);
