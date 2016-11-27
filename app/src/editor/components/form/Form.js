@@ -30,6 +30,24 @@ class Form extends React.Component {
     this.initMethods();
   }
 
+  shouldComponentUpdate(nextProps, { title, isValid }) {
+    return this.state.title !== title
+           || this.state.isValid !== isValid;
+  }
+
+  onMetricChange() {
+    const { inputUnit } = this.fields;
+    const { METRIC, IMPERIAL } = unitType;
+    this.fields.inputUnit = inputUnit === METRIC ? IMPERIAL : METRIC;
+  }
+
+  onTitleChange({ target: { value } }) {
+    this.fields.inputTitle = value;
+    this.setState({
+      title: value
+    });
+  }
+
   onSubmit(e) {
     e.preventDefault();
     const isValid = this.validateForm();
@@ -43,19 +61,6 @@ class Form extends React.Component {
     if (isValid) {
       this.props.onWidgetCreated(this.fields);
     }
-  }
-
-  onTitleChange({ target: { value } }) {
-    this.fields.inputTitle = value;
-    this.setState({
-      title: value
-    });
-  }
-
-  onMetricChange() {
-    const { inputUnit } = this.fields;
-    const { METRIC, IMPERIAL } = unitType;
-    this.fields.inputUnit = inputUnit === METRIC ? IMPERIAL : METRIC;
   }
 
   onInputWindCheck(e, isChecked) {
