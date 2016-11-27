@@ -104,13 +104,13 @@ class Form extends React.Component {
                 label="Imperial"
               />
             </RadioButtonGroup>
-
-            <RaisedButton
-              label="Submit"
-              primary
-              type="submit"
-            />
           </div>
+
+          <RaisedButton
+            label="Submit"
+            primary
+            type="submit"
+          />
         </form>
       </div>
     );
