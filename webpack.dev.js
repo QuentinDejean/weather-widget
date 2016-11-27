@@ -4,19 +4,16 @@ const path              = require('path');
 const context = path.resolve(__dirname, 'app');
 
 const config = [{
-  context,
+  context: `${context}/src/editor`,
   devtool: "eval-source-map",
-  entry: {
-    editor: `${context}/src/editor/components/editor.js`,
-    widget: `${context}/src/widget/components/widget.js`
-  },
+  entry: `${context}/src/editor/components/index.js`,
   output: {
     path: `${context}/build`,
-    filename: '[name].[hash].bundle.js'
+    filename: 'bundle.editor.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: `src/editor/assets/index.html`
+      template: 'assets/index.html'
     })
   ]
 }];
