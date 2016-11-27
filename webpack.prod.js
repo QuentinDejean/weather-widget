@@ -1,7 +1,7 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const { DefinePlugin }   = require('webpack');
+const webpack            = require('webpack');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
 const env                = require('./.env');
 const path               = require('path');
@@ -26,7 +26,7 @@ const modules = {
 };
 
 const plugins = [
-  new DefinePlugin({
+  new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
   })
 ];
@@ -72,10 +72,18 @@ const config = [{
   },
   plugins: [
     ...plugins,
-    new DefinePlugin({
+    new webpack.DefinePlugin({
       WEATHER_API: JSON.stringify(env.WEATHER_API_KEY)
     }),
-    new CleanWebpackPlugin(`${context}/build`)
+    new CleanWebpackPlugin(`${context}/build`),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        screw_ie8: true
+      },
+      comments: false
+    })
   ]
 }];
 
