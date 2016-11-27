@@ -32,5 +32,6 @@ getWidgetParams()
   }
 })
 .catch((e) => {
+  // eslint-disable-next-line
   console.log('An error occured while initialising widget params: ', e);
 });
