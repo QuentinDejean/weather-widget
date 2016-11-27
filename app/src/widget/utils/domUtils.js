@@ -1,13 +1,9 @@
-/* global document:true*/
+/* global document:true */
 /* eslint valid-typeof: 0 */
 
-const paramValidation = {
-  showWind: 'boolean',
-  unit: 'string',
-  title: 'string'
-};
+import unitValidation, { paramValidation } from './validationUtils';
 
-const extractParams = function extractParams(wScript) {
+const extractWidgetParams = function extractWidgetParams(wScript) {
   try {
     const params = {
       showWind: wScript.getAttribute('data-show-wind') === 'true',
@@ -21,6 +17,10 @@ const extractParams = function extractParams(wScript) {
 
     if (typeError) {
       return Promise.reject(new Error(`${typeError} should be of type ${paramValidation[typeError]}`));
+    }
+
+    if (!unitValidation.includes(params.unit)) {
+      return Promise.reject(new Error(`unit should be of type ${unitValidation.toString()}`));
     }
 
     return Promise.resolve(params);
@@ -84,7 +84,7 @@ const getWidgetParams = function getWidgetParams() {
   .then(({ wScript, index }) => {
     return Promise.all([
       createWidgetContainer(wScript, index),
-      extractParams(wScript)
+      extractWidgetParams(wScript)
     ]);
   })
   .catch((e) => {
