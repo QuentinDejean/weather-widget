@@ -1,10 +1,18 @@
+/* global document:true*/
+
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import Form from './form/Form';
+import Examples from './Examples';
 
 const App = () => (
-  <MuiThemeProvider>
+  <div>
     <h1>Welcome to the Weather Widget Editor!</h1>
-  </MuiThemeProvider>
+    <Form
+      onWidgetCreated={onWidgetCreated}
+    />
+    <Examples />
+  </div>
 );
 
 export default App;
