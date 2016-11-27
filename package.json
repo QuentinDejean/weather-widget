@@ -1,9 +1,15 @@
 {
   "name": "weather-widget",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Embeddable Weather widget based on OpenWeatherMap",
   "main": "index.js",
+  "engines": {
+    "node": "6.9.0",
+    "npm": "2.15.5"
+  },
   "scripts": {
+    "build": "webpack --progress --config webpack.prod.js",
+    "dev": "webpack-dev-server --config webpack.dev.js --open",
     "test": "test"
   },
   "repository": {
@@ -21,5 +27,35 @@
   "bugs": {
     "url": "https://github.com/QuentinDejean/weather-widget/issues"
   },
-  "homepage": "https://github.com/QuentinDejean/weather-widget#readme"
+  "homepage": "https://github.com/QuentinDejean/weather-widget#readme",
+  "devDependencies": {
+    "babel": "6.5.2",
+    "babel-core": "6.18.2",
+    "babel-loader": "6.2.8",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "clean-webpack-plugin": "0.1.14",
+    "css-loader": "0.26.0",
+    "eslint": "3.11.0",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-loader": "1.6.1",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.7.1",
+    "file-loader": "0.9.0",
+    "html-webpack-plugin": "2.24.1",
+    "react-hot-loader": "3.0.0-beta.6",
+    "style-loader": "0.13.1",
+    "url-loader": "0.5.7",
+    "webpack": "2.1.0-beta.27",
+    "webpack-dev-server": "2.1.0-beta.12"
+  },
+  "dependencies": {
+    "material-ui": "0.16.4",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "react-tap-event-plugin": "2.0.1",
+    "stampit": "3.0.6",
+    "superagent": "3.0.0"
+  }
 }
