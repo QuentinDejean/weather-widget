@@ -10,6 +10,7 @@ class Editor extends React.Component {
   constructor() {
     super();
 
+    this.scriptName = 'bundle.widget.js';
     this.state = {};
     this.initMethods();
   }
@@ -17,6 +18,7 @@ class Editor extends React.Component {
   onDemoRef(ref) {
     if (!this.demoRef) {
       this.demoRef = ref;
+      this.appendScript();
     }
   }
 
@@ -30,14 +32,24 @@ class Editor extends React.Component {
   }
 
   appendScript() {
+    if (!this.demoRef) {
+      return;
+    }
+
     const { title, wind, unit } = this.state;
     const script = document.createElement('script');
 
-    script.src = 'bundle.widget.js';
+    script.src = this.scriptName;
     script.async = true;
     script.setAttribute('title', title);
     script.setAttribute('data-show-wind', wind);
     script.setAttribute('data-unit', unit);
+
+    if (this.demoRef.hasChildNodes()) {
+      this.demoRef.removeChild(this.demoRef.lastChild);
+    }
+
+    this.demoRef.appendChild(script);
   }
 
   initMethods() {
@@ -46,16 +58,15 @@ class Editor extends React.Component {
   }
 
   renderScript() {
-    this.appendScript();
     const { title, wind, unit } = this.state;
     return (
       <div>
         <h3>Here is your widget:</h3>
-        <div ref={this.demoRef}></div>
+        <div ref={this.onDemoRef} />
         <h3>To include it in your page, you simply need to embed the following script:</h3>
         &lt;script type=&quot;text/javascript&quot;
           async
-          src=&quot;bundle.widget.js&quot; data-title={title} data-wind={wind} data-unit={unit}
+          src=&quot;{this.scriptName}&quot; data-title=&quot;{title}&quot; data-wind=&quot;{`${wind}`}&quot; data-unit=&quot;{unit}&quot;
         &gt;&lt;/script&gt;
       </div>
     );

@@ -17,22 +17,20 @@ class Form extends React.Component {
     super();
 
     this.state = {
-      title: 'Simple Text',
-      isValid: true
+      title: 'Simple Text'
     };
 
     this.fields = {
       inputTitle: this.state.title,
       inputUnit: unitType.METRIC,
-      inputWind: 'show'
+      inputWind: true
     };
 
     this.initMethods();
   }
 
-  shouldComponentUpdate(nextProps, { title, isValid }) {
-    return this.state.title !== title
-           || this.state.isValid !== isValid;
+  shouldComponentUpdate(nextProps, { title }) {
+    return this.state.title !== title;
   }
 
   onMetricChange() {
@@ -50,33 +48,12 @@ class Form extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const isValid = this.validateForm();
 
-    if (isValid !== this.state.isValid) {
-      this.setState({
-        isValid
-      });
-    }
-
-    if (isValid) {
-      this.props.onWidgetCreated(this.fields);
-    }
+    this.props.onWidgetCreated(this.fields);
   }
 
   onInputWindCheck(e, isChecked) {
     this.fields.inputWind = isChecked;
-  }
-
-  validateForm() {
-    let isValid = true;
-
-    Object.keys(this.fields).forEach((key) => {
-      if (!this.fields[key]) {
-        isValid = false;
-      }
-    });
-
-    return isValid;
   }
 
   initMethods() {
@@ -87,7 +64,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const { isValid, title } = this.state;
+    const { title } = this.state;
     const { inputUnit } = this.fields;
 
     return (
@@ -96,11 +73,11 @@ class Form extends React.Component {
           <h3>Please start by choosing your configuration</h3>
           <div className="form-section">
             <TextField
-              errorText={!isValid && !title ? 'This field is required' : null}
               floatingLabelText="Widget Title"
               hintText="Will appear at the top of the widget"
               onChange={this.onTitleChange}
               value={title}
+              required
             />
           </div>
 
