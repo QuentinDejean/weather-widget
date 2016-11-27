@@ -3,18 +3,19 @@ const path              = require('path');
 
 const context = path.resolve(__dirname, 'app');
 
-const config = {
+const config = [{
+  context,
   devtool: "eval-source-map",
-  entry: `${context}/src/editor/components/index.js`,
+  entry: `src/editor/components/index.js`,
   output: {
     path: `${context}/build`,
     filename: 'bundle.demo.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: `${context}/src/editor/assets/index.html`
+      template: `src/editor/assets/index.html`
     })
   ]
-}
+}];
 
 module.exports = config;
