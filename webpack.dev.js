@@ -71,7 +71,8 @@ const config = [{
   module: modules,
   output: {
     path: `${context}/build`,
-    filename: 'bundle.widget.js'
+    filename: 'bundle.widget.js',
+    publicPath: '/assets/'
   },
   plugins
 }];

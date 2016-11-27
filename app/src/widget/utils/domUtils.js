@@ -35,6 +35,7 @@ const createWidgetContainer = function createWidgetContainer(wScript, index) {
   .then(() => {
     const widgetContainer = document.createElement('div');
     widgetContainer.id = widgetId;
+    widgetContainer.className = 'cleanslate weather-widget';
     wScript.parentNode.insertBefore(widgetContainer, wScript);
   })
   .then(() => {
@@ -50,9 +51,11 @@ const findWidget = function findWidget() {
     document.weatherWidget = {};
   }
 
+  let isFirstWidget = false;
   const weatherWidget = document.weatherWidget;
 
   if (!weatherWidget.existing) {
+    isFirstWidget = true;
     weatherWidget.existing = [];
   }
 
@@ -68,6 +71,7 @@ const findWidget = function findWidget() {
   if (scriptIndex) {
     existing.push(weatherScripts[scriptIndex]);
     return Promise.resolve({
+      isFirstWidget,
       wScript: weatherScripts[scriptIndex],
       index: existing.length - 1
     });
@@ -76,15 +80,28 @@ const findWidget = function findWidget() {
   return Promise.reject(new Error('No widget was found'));
 };
 
+const injectResetStylesheet = function injectResetStylesheet(isFirstWidget) {
+  if (!isFirstWidget) {
+    return Promise.resolve();
+  }
+
+  document.getElementsByTagName('head')[0]
+    .appendChild(document.createElement('link'))
+    .setAttribute('href', 'cleanslate.css');
+
+  return Promise.resolve();
+};
+
 const getWidgetParams = function getWidgetParams() {
   return Promise.resolve()
   .then(() => {
     return findWidget();
   })
-  .then(({ wScript, index }) => {
+  .then(({ isFirstWidget, wScript, index }) => {
     return Promise.all([
       createWidgetContainer(wScript, index),
-      extractWidgetParams(wScript)
+      extractWidgetParams(wScript),
+      injectResetStylesheet(isFirstWidget)
     ]);
   })
   .catch((e) => {
