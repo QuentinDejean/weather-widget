@@ -2,6 +2,11 @@
 
 History of the changes mades to the Weather Widget.
 
+## v1.0.1
+##### 28 November, 2016
+
+- Bug Fix: `WEATHER_API_KEY` was not being passed properly to the app
+
 ## v1.0.0
 ##### 28 November, 2016
 
