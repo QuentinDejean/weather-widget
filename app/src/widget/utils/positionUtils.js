@@ -1,4 +1,4 @@
-/* global navigator:true */
+/* global WEATHER_API_KEY navigator:true */
 
 import request from 'superagent';
 // eslint-disable-next-line import/extensions
