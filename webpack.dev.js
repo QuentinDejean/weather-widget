@@ -91,7 +91,7 @@ const config = [{
   plugins: [
     ...plugins,
     new DefinePlugin({
-      WEATHER_API: JSON.stringify(env.WEATHER_API_KEY)
+      WEATHER_API_KEY: JSON.stringify(env.WEATHER_API_KEY)
     })
   ]
 }];
