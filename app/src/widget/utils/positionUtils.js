@@ -17,7 +17,7 @@ const Position = stampit()
       return new Promise((resolve, reject) => {
         request.get('http://api.openweathermap.org/data/2.5/weather')
         .set('Accept', 'application/json')
-        .query({ units, lat, lon, APPID: 'e46823980647373f7478341aa7dfe237' })
+        .query({ units, lat, lon, APPID: WEATHER_API_KEY })
         .end((err, { body }) => {
           if (err) {
             reject(err);
