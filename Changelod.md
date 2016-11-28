@@ -2,6 +2,12 @@
 
 History of the changes mades to the Weather Widget.
 
+## v1.0.2
+##### 28 November, 2016
+
+- Bug Fix: eslint was complaining about `WEATHER_API_KEY` global variable
+- Bug Fix: `WEATHER_API_KEY` was not configured properly for production
+
 ## v1.0.1
 ##### 28 November, 2016
 

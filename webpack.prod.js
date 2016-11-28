@@ -73,7 +73,7 @@ const config = [{
   plugins: [
     ...plugins,
     new webpack.DefinePlugin({
-      WEATHER_API: JSON.stringify(env.WEATHER_API_KEY)
+      WEATHER_API_KEY: JSON.stringify(env.WEATHER_API_KEY)
     }),
     new CleanWebpackPlugin(`${context}/build`),
     new webpack.NoErrorsPlugin(),
